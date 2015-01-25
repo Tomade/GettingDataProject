@@ -93,7 +93,7 @@ row-wise with `rbind()`, saving the now complete set in `data`.
 This involves selecting only the variables with the strings `"mean()"` or `"std()"` in their
 names.  At this stage we do not even have the names yet, however, so we first read them
 from the file `features.txt` and assign them to our main dataframe, together
-with the names "Subject" and "Activity" for the first two columns.  Reading from
+with the names `"Subject"` and `"Activity"` for the first two columns.  Reading from
 `features.txt` gives us a factor for the feature names, so they also have to be
 converted to character:
 
@@ -104,7 +104,7 @@ names(data) <- c("Subject", "Activity", featureNames)
 ```
 
 Discarding the variables that do not satisfy our requirements is done by
-creating a selection vector using a regular expression search on the frame
+creating a selection vector using a regular expression search on the column
 names, and reassigning the subset to our main frame.
 
 ```r
@@ -140,12 +140,10 @@ names(data) <- gsub("std", "Std", names(data))    # capitalize "std"
 More information on this transformation can be found in the Code Book made
 available in this reposity.
 
-#### 5. From the data set in step 4, creates a second, independent tidy data
-set with the average of each variable for each activity and each
-subject.
+#### 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
-This step was made very simple and concise thanks to the `summarise_each()`
-function made available by the `dplyr` library.  I could aggregate the
+This step was made very simple and concise thanks to the `summarise_each()` and `group_by()`
+functions made available by the `dplyr` library.  I could aggregate the
 information as required and save the results to a text file with:
 
 ```r

@@ -28,7 +28,7 @@ activity_labels <- read.table("activity_labels.txt")
 data$Activity <- factor(data$Activity, labels=activity_labels[,2])
 
 # --- STEP 4: "Appropriately labels the data set with descriptive variable names."
-names(data) <- gsub("\\(\\)|-", "", names(data))  # remove all brackets in column names
+names(data) <- gsub("\\(\\)|-", "", names(data))  # remove all brackets and hyphens in column names
 names(data) <- gsub("mean", "Mean", names(data))  # capitalize "mean"
 names(data) <- gsub("std", "Std", names(data))    # capitalize "std"
 
